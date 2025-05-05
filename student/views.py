@@ -10,13 +10,15 @@ def home(request):
         phone = request.POST.get('phone')
         password = request.POST.get('password')
         checkbox = request.POST.get('checkbox')
+        photo = request.FILES.get('photo')
+        
         
         if checkbox:
             checkbox = True
         else:
             checkbox = False
         
-        student = models.Student(name=name, email=email, phone=phone, password=password, checkbox=checkbox)
+        student = models.Student(name=name, photo= photo, email=email, phone=phone, password=password, checkbox=checkbox)
         student.save()
         return HttpResponse("Student data saved successfully!")
     
